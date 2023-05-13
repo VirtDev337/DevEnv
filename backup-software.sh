@@ -8,4 +8,16 @@ list_ppas () {
     grep '^ppa:'
 }
 
+if [ -d $HOME/backups ] > /dev/null
+then
+  cd $HOME/backups
+else
+  mkdir $HOME/backups
+  cd $HOME/backups
+fi
+
 list_ppas | xargs printf 'add-apt-repository -y %s\n' > install_ppas.sh
+
+apt-mark showmanual > apt-installed
+
+sudo dpkg -l | awk '/^ii/ { print $2 }' > package-list
