@@ -18,3 +18,5 @@ else
     echo "There was an issue.  Use \`sudo visudo\` to verify contents."
     cat ./sudoerErr
 fi
+
+rm ./sudoerErr
