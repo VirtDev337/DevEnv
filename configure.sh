@@ -22,7 +22,7 @@ then
     echo "Development dependencies are already installed."
 else
     echo "Adding development dependencies..."
-    sudo apt install -y software-properties-common apt-transport-https wget git curl
+    sudo apt install -y software-properties-common apt-transport-https wget git curl > /dev/null
 fi
 
 while getopts "?acCikr" option
@@ -35,9 +35,9 @@ do
             else
                 echo "Installing Android Studio..."
                 sudo dpkg --add-architecture i386
-                sudo apt install -y openjdk-14-jdk libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 
+                sudo apt install -y openjdk-14-jdk libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 > /dev/null
 
-                sudo add-apt-repository -y ppa:maarten-fonville/android-studio
+                sudo add-apt-repository -y ppa:maarten-fonville/android-studio > /dev/null
                 
                 sudo apt install -y android-studio
             fi
@@ -98,14 +98,14 @@ then
     else
         echo "Downloading the necessary files..."
         cd ~/.config
-        git clone https://github.com/VirtDev337/DevEnv.git
+        git clone https://github.com/VirtDev337/DevEnv.git > /dev/null
         cd ./DevEnv
     fi
 fi
 
 if [ $keep ]
 then
-    sed -Ei "s/^(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ./install.sh
+    sed -Ei "s/^(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ./install.sh  > /dev/null
     sudo bash edit.sh > /dev/null
 fi
 
