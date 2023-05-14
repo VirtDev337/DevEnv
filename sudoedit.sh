@@ -8,15 +8,6 @@ else
     sudo sed -E '/^(%Defaults(.+)env_reset)/i "Defaults \2 env_keep = \"http_proxy\"" \1 /' /etc/sudoers
 fi
 
-if (grep -q /^"virtdev\tALL=(ALL) NOPASSWD:ALL"/ /etc/sudoers)
-then
-    echo "User permissions added."
-else
-    echo "Adding user permissions."
-    sudo sed -Ei '/^root(\s)ALL=\(ALL:ALL\) ALL/a virtdev\tALL=(ALL) NOPASSWD:ALL' etc/sudoers
-    echo "Entry appended."
-fi
-
 echo "Verifying additions..."
 sudo visudo -cq > ./sudoerErr
 
@@ -27,3 +18,5 @@ else
     echo "There was an issue.  Use \`sudo visudo\` to verify contents."
     cat ./sudoerErr
 fi
+
+rm ./sudoerErr
