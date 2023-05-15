@@ -14,6 +14,7 @@ then
 else
     echo "Adding user permissions."
     echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee "/etc/sudoers.d/dont-prompt-$USER"
+    sudo chmod 0440 /etc/sudoers.d/dont-prompt-$USER > /dev/null
     echo "Entry appended."
 fi
 
@@ -25,7 +26,7 @@ then
     echo "Additions to sudoers was successful."
 else
     echo "There was an issue.  Use \`sudo visudo\` to verify contents."
-    cat ./sudoerErr
+    echo ./sudoerErr
 fi
 
 rm ./sudoerErr
