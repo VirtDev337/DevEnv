@@ -24,7 +24,7 @@ else
     sudo apt install -y software-properties-common apt-transport-https wget git curl > /dev/null
 fi
 echo $#
-if [ $# > 0 ]
+if  $# > 0 
 then
     while getopts "?acCikr" option
     do
@@ -105,13 +105,14 @@ then
     fi
 fi
 
-if [ $keep ]
+if $keep
 then
-    sed -Ei "/^(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ./install.sh  > /dev/null
-    sudo bash edit.sh > /dev/null
+    echo "Modifying install.sh..."
+    sed -Ei "s/(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ./install.sh  > /dev/null
+    ( bash ./edit.sh )
 fi
 
-if [ $run ]
+if $run
 then
     echo "Backing up the sources and generating installed applicrions and packages list."
     sudo bash backup.sh
@@ -125,7 +126,7 @@ else
     touch ~/.bash_aliases
 fi
 
-if ( grep -E '/alias install="bash .*"/' ~/.bash_aliases && grep -E '/alias configure="bash .*"/' ~/.bash_aliases )
+if ( grep -E '/alias install="bash .*"/' ~/.bash_aliases && grep -E '/alias configure="bash .*"/' ~/.bash_aliases ) > /dev/null
 then
     echo "Aliases already confgiured..."
 else
