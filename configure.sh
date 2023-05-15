@@ -108,14 +108,14 @@ fi
 if $keep
 then
     echo "Modifying install.sh..."
-    sed -Ei "s/(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ./install.sh  > /dev/null
-    ( bash ./edit.sh )
+    sed -Ei "/(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ~/.config/DevEnv/install.sh  > /dev/null
+    ( bash ~/.config/DevEnv/edit.sh )
 fi
 
 if $run
 then
     echo "Backing up the sources and generating installed applicrions and packages list."
-    sudo bash backup.sh
+    sudo bash ~/.config/DevEnv/backup.sh
 fi
 
 if [ -f ~/.bash_aliases ]
@@ -138,4 +138,5 @@ alias backup="bash ~/.config/DevEnv/backup.sh"
 alias uninstall="bash ~/.config/DevEnv/uninstall.sh"' >> ~/.bash_aliases
 fi
 
+source ~/.bashrc
 exit 0
