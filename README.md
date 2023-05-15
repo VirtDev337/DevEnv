@@ -13,7 +13,11 @@ The idea is to back up all of the installed applications, their PPA sources and 
 
 ## Usage
 You can use curl to clone the repo.  In the terminal type: <br>
-`curl -# https://raw.githubusercontent.com/VirtDev337/DevEnv/main/configure.sh | bash` <br>  You can also run the *configure.sh* file again locally, with flags to get some of the other benefits of the scripts:
+`curl https://raw.githubusercontent.com/VirtDev337/DevEnv/main/configure.sh | bash -s` <br>  
+It is possible to use the flags in the curl call, add two hyphens after the `-s` followed by a space and the flags you want to use.
+Example:
+`curl https://raw.githubusercontent.com/VirtDev337/DevEnv/main/configure.sh | bash -s -- -ak` <br>
+You can also run the *configure.sh* file again locally, with flags to get some of the other benefits of the scripts:
 <div>
   
 ```
