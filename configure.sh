@@ -126,15 +126,16 @@ else
     touch ~/.bash_aliases
 fi
 
-if ( grep -E '/alias install="bash .*"/' ~/.bash_aliases && grep -E '/alias configure="bash .*"/' ~/.bash_aliases ) > /dev/null
+if ( grep -E '/alias (install|configure|backup|uninstall)="bash $HOME/.config/DevEnv/\1.sh\"' ~/.bash_aliases ) > /dev/null
 then
     echo "Aliases already confgiured..."
 else
     echo "Creating command aliases."
-    echo 'alias install="bash ~/.config/DevEnv/install.sh"
-    alias configure="bash ~/.config/DevEnv/configure.sh"
-    alias backup="bash ~/.config/DevEnv/backup.sh"
-    alias uninstall="bash ~/.config/DevEnv/uninstall.sh"' >> ~/.bash_aliases
+    echo '
+alias install="bash ~/.config/DevEnv/install.sh"
+alias configure="bash ~/.config/DevEnv/configure.sh"
+alias backup="bash ~/.config/DevEnv/backup.sh"
+alias uninstall="bash ~/.config/DevEnv/uninstall.sh"' >> ~/.bash_aliases
 fi
 
 exit 0
