@@ -126,7 +126,7 @@ else
     touch ~/.bash_aliases
 fi
 
-if ( grep -E '/alias (install|configure|backup|uninstall)="bash $HOME/.config/DevEnv/\1.sh\"' ~/.bash_aliases ) > /dev/null
+if ( grep -E '#alias (install|configure|backup|uninstall)="bash $HOME/.config/DevEnv/\1.sh"#' ~/.bash_aliases ) > /dev/null
 then
     echo "Aliases already confgiured..."
 else
