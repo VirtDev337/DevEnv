@@ -108,7 +108,7 @@ fi
 if $keep
 then
     echo "Modifying install.sh..."
-    sed -Ei "/(sudo rm /etc/sudoers.d/dont-prompt-$USER)/#\1/" ~/.config/DevEnv/install.sh  > /dev/null
+    sed -Ei "/('sudo rm /etc/sudoers.d/dont-prompt-$USER')/#\1/" ~/.config/DevEnv/install.sh  > /dev/null
     ( bash ~/.config/DevEnv/edit.sh )
 fi
 
