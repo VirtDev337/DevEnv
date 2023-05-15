@@ -24,7 +24,7 @@ else
     sudo apt install -y software-properties-common apt-transport-https wget git curl > /dev/null
 fi
 echo $#
-if  $# > 0 
+if  [ $# > 0 ] 
 then
     while getopts "?acCikr" option
     do
